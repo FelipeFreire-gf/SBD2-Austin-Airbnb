@@ -26,11 +26,15 @@ pillow==12.1.0
 platformdirs==4.5.1
 prompt_toolkit==3.0.52
 psutil==7.2.1
+psycopg2-binary==2.9.11
 ptyprocess==0.7.0
 pure_eval==0.2.3
+py4j==0.10.9.9
 Pygments==2.19.2
 pyparsing==3.3.1
+pyspark==4.1.1
 python-dateutil==2.9.0.post0
+python-dotenv==1.2.1
 pytz==2025.2
 pyzmq==27.1.0
 scikit-learn==1.8.0
