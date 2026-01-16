@@ -7,8 +7,8 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repositório-181717?style=for-the-badge&logo=github)](https://github.com/FelipeFreire-gf/SBD2-Austin-Airbnb)
-[![Documentação](https://img.shields.io/badge/Docs-MkDocs-526CFE?style=for-the-badge&logo=materialformkdocs&logoColor=white)](https://felipefreire-gf.github.io/SBD2-Austin-Airbnb/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repositório-181717?style=for-the-badge&logo=github)](https://github.com/FelipeFreire-gf/SBD2-Airline_Delay_Cause)
+[![Documentação](https://img.shields.io/badge/Docs-MkDocs-526CFE?style=for-the-badge&logo=materialformkdocs&logoColor=white)](https://felipefreire-gf.github.io/SBD2-Airline_Delay_Cause/)
 [![MIRO](https://img.shields.io/badge/MIRO-Board-050038?style=for-the-badge&logo=miro&logoColor=FFD02F)](https://miro.com/app/board/uXjVGSwQ8Ok=/?share_link_id=465202330329)
 
 </div>
@@ -101,7 +101,7 @@ Para mais detalhes veja a documentação:
 
 ## Documentação
 
-**Site de Documentação**: [https://felipefreire-gf.github.io/SBD2-Austin-Airbnb/](https://felipefreire-gf.github.io/SBD2-Austin-Airbnb/)
+**Site de Documentação**: [https://felipefreire-gf.github.io/SBD2-Airline_Delay_Cause/](https://felipefreire-gf.github.io/SBD2-Airline_Delay_Cause/)
 
 A documentação completa inclui:
 - Estrutura das camadas Bronze, Silver e Gold
@@ -166,8 +166,8 @@ Utilize o board do MIRO para:
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/FelipeFreire-gf/SBD2-Austin-Airbnb.git
-cd SBD2-Austin-Airbnb
+git clone https://github.com/FelipeFreire-gf/SBD2-Airline_Delay_Cause.git
+cd SBD2-Airline_Delay_Cause
 ```
 
 ### 2. Instale as dependências
@@ -215,29 +215,37 @@ Acesse: `http://localhost:8000`
 ## Estrutura do Projeto
 
 ```
-SBD2-Austin-Airbnb/
+SBD2-Airline_Delay_Cause/
 ├── Data Layer/
-│   ├── raw/                    # Camada Bronze (dados brutos)
-│   │   ├── dados_brutos.csv
-│   │   ├── analytics.ipynb
-│   │   └── dicionario_de_dados.pdf
-│   └── silver/                 # Camada Silver (dados limpos)
-│       ├── analytics.ipynb
-│       └── ddl.sql
+│   ├── gold/                       # Camada Gold (agregações e métricas)
+│   │   ├── consultas.sql          # Consultas analíticas
+│   │   ├── ddl.sql                # Definição do schema gold
+│   │   ├── mer_der_dld.pdf        # Modelagem de dados
+│   │   └── mnemonico.pdf          # Dicionário mnemônico
+│   ├── raw/                        # Camada Bronze (dados brutos)
+│   │   ├── analytics.ipynb        # Análise exploratória dos dados brutos
+│   │   ├── dados_brutos.csv       # Dataset original do Kaggle
+│   │   └── dicionario_de_dados.pdf # Documentação do dataset
+│   └── silver/                     # Camada Silver (dados limpos)
+│       ├── analytics.ipynb        # Análises da camada silver
+│       ├── ddl.sql                # Definição do schema silver
+│       └── mer_der_dld.pdf        # Modelagem de dados silver
 ├── Transformer/
-│   └── etl_raw_to_silver.ipynb # Pipeline ETL
-├── docs/                       # Documentação MkDocs
+│   ├── etl_raw_to_silver.ipynb    # Pipeline ETL Bronze → Silver
+│   └── etl_silver_to_gold.ipynb   # Pipeline ETL Silver → Gold
+├── docs/                           # Documentação MkDocs
 │   ├── index.md
 │   ├── assets/
 │   └── pages/
-│       ├── entrega0/           # Base de Dados
-│       ├── entrega1/           # Raw → Silver
-│       ├── entrega2/           # Gold Layer
-│       └── entrega3/           # Power BI
-├── site/                       # Site estático gerado
-├── docker-compose.yml          # Configuração do PostgreSQL
-├── requirements.txt            # Dependências Python
-├── mkdocs.yml                  # Configuração da documentação
+│       ├── entrega0/              # Base de Dados
+│       ├── entrega1/              # Raw → Silver
+│       ├── entrega2/              # Gold Layer
+│       └── entrega3/              # Power BI
+├── site/                           # Site estático gerado pelo MkDocs
+├── docker-compose.yml              # Configuração do PostgreSQL
+├── Dockerfile                      # Imagem Docker do projeto
+├── requirements.txt                # Dependências Python
+├── mkdocs.yml                      # Configuração da documentação
 └── README.md
 ```
 
