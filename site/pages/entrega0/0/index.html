@@ -425,6 +425,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Fonte de Dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposito-do-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propósito do Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrutura-do-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrutura do Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -432,6 +460,67 @@
     <span class="md-ellipsis">
       
         Estrutura dos Dados Brutos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estrutura dos Dados Brutos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dimensoes-temporais-e-identificadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📅 Dimensões Temporais e Identificadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas-operacionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✈️ Métricas Operacionais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contagem-de-atrasos-por-causa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔢 Contagem de Atrasos por Causa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tempo-de-atraso-por-causa-em-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ Tempo de Atraso por Causa (em minutos)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-do-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Características do Dataset
       
     </span>
   </a>
@@ -796,6 +885,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Fonte de Dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposito-do-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propósito do Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrutura-do-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrutura do Dataset
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -803,6 +920,67 @@
     <span class="md-ellipsis">
       
         Estrutura dos Dados Brutos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estrutura dos Dados Brutos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dimensoes-temporais-e-identificadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📅 Dimensões Temporais e Identificadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas-operacionais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✈️ Métricas Operacionais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contagem-de-atrasos-por-causa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔢 Contagem de Atrasos por Causa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tempo-de-atraso-por-causa-em-minutos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⏱️ Tempo de Atraso por Causa (em minutos)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteristicas-do-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Características do Dataset
       
     </span>
   </a>
@@ -872,15 +1050,33 @@
 <h3 id="objetivo">Objetivo</h3>
 <p>Estabelecer a base de dados para análise de atrasos de voos em aeroportos dos Estados Unidos, implementando a camada <strong>Bronze</strong> (dados brutos) da arquitetura Medallion.</p>
 <h3 id="fonte-de-dados">Fonte de Dados</h3>
-<p>Os dados foram obtidos do <strong>Bureau of Transportation Statistics (BTS)</strong> do governo dos Estados Unidos, contendo informações históricas sobre:</p>
+<p><strong>Dataset</strong>: <a href="https://www.kaggle.com/datasets/sriharshaeedala/airline-delay">Airline Delay and Cancellation Data (2013-2023)</a><br />
+<strong>Fonte Original</strong>: Bureau of Transportation Statistics (BTS) - U.S. Government<br />
+<strong>Período de Cobertura</strong>: Agosto 2013 - Agosto 2023 (10 anos de dados históricos)<br />
+<strong>Tamanho do Arquivo</strong>: 28.73 MB (<code>Airline_Delay_Cause.csv</code>)<br />
+<strong>Licença</strong>: U.S. Government Works (domínio público)<br />
+<strong>Usabilidade</strong>: 10.0/10 no Kaggle<br />
+<strong>Atualização</strong>: Anual</p>
+<h4 id="proposito-do-dataset">Propósito do Dataset</h4>
+<p>O dataset foi criado para oferecer insights detalhados sobre a performance operacional de companhias aéreas dos EUA durante 10 anos. Ele permite análises de:</p>
 <ul>
-<li>Atrasos de voos por aeroporto</li>
-<li>Métricas de desempenho das companhias aéreas</li>
-<li>Causas de atrasos (meteorologia, companhia aérea, NAS, segurança, aeronave atrasada)</li>
-<li>Cancelamentos e desvios de voos</li>
+<li>✈️ <strong>Análise de Performance</strong>: Avaliar pontualidade de diferentes carriers em aeroportos específicos e identificar áreas de melhoria</li>
+<li>📊 <strong>Identificação de Tendências</strong>: Analisar tendências temporais de atrasos, cancelamentos e desvios para entender períodos com maiores desafios operacionais</li>
+<li>🔍 <strong>Análise de Causa-Raiz</strong>: Investigar os principais contribuidores de atrasos (companhia, clima, NAS, segurança, aeronave)</li>
+<li>📈 <strong>Benchmarking</strong>: Comparar performance de várias companhias em diferentes aeroportos para identificar líderes da indústria</li>
+<li>🤖 <strong>Modelagem Preditiva</strong>: Usar dados históricos para desenvolver modelos preditivos de atrasos</li>
+<li>💡 <strong>Insights Estratégicos</strong>: Contribuir para melhor compreensão dos fatores que influenciam eficiência operacional no setor aéreo americano</li>
 </ul>
+<h4 id="estrutura-do-dataset">Estrutura do Dataset</h4>
+<p>O dataset possui <strong>formato tabular</strong> com <strong>21 colunas</strong> organizadas por combinações únicas de:
+- Ano (year)
+- Mês (month)
+- Companhia aérea (carrier)
+- Aeroporto (airport)</p>
+<p>Cada linha representa métricas agregadas para essa combinação específica, incluindo contagens de voos, atrasos, cancelamentos e breakdown detalhado por causa de atraso.</p>
 <h3 id="estrutura-dos-dados-brutos">Estrutura dos Dados Brutos</h3>
-<p>O arquivo <code>dados_brutos.csv</code> contém os seguintes campos:</p>
+<p>O arquivo <code>dados_brutos.csv</code> (<code>Airline_Delay_Cause.csv</code>) contém os seguintes 21 campos:</p>
+<h4 id="dimensoes-temporais-e-identificadores">📅 Dimensões Temporais e Identificadores</h4>
 <table>
 <thead>
 <tr>
@@ -891,55 +1087,46 @@
 <tbody>
 <tr>
 <td>year</td>
-<td>Ano do registro</td>
+<td>Ano do registro (2013-2023)</td>
 </tr>
 <tr>
 <td>month</td>
-<td>Mês do registro</td>
+<td>Mês do registro (1-12)</td>
 </tr>
 <tr>
 <td>carrier</td>
-<td>Código da companhia aérea</td>
+<td>Código da companhia aérea (ex: AA, DL, UA)</td>
 </tr>
 <tr>
 <td>carrier_name</td>
-<td>Nome da companhia aérea</td>
+<td>Nome completo da companhia aérea</td>
 </tr>
 <tr>
 <td>airport</td>
-<td>Código do aeroporto</td>
+<td>Código IATA do aeroporto (3 letras)</td>
 </tr>
 <tr>
 <td>airport_name</td>
-<td>Nome do aeroporto</td>
+<td>Nome completo do aeroporto</td>
 </tr>
+</tbody>
+</table>
+<h4 id="metricas-operacionais">✈️ Métricas Operacionais</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>arr_flights</td>
-<td>Número de voos de chegada</td>
+<td>Número total de voos de chegada</td>
 </tr>
 <tr>
 <td>arr_del15</td>
 <td>Número de voos atrasados ≥15 minutos</td>
-</tr>
-<tr>
-<td>carrier_ct</td>
-<td>Contagem de atrasos causados pela companhia</td>
-</tr>
-<tr>
-<td>weather_ct</td>
-<td>Contagem de atrasos causados por condições meteorológicas</td>
-</tr>
-<tr>
-<td>nas_ct</td>
-<td>Contagem de atrasos causados pelo Sistema de Aviação Nacional</td>
-</tr>
-<tr>
-<td>security_ct</td>
-<td>Contagem de atrasos causados por segurança</td>
-</tr>
-<tr>
-<td>late_aircraft_ct</td>
-<td>Contagem de atrasos causados por aeronave atrasada</td>
 </tr>
 <tr>
 <td>arr_cancelled</td>
@@ -947,34 +1134,86 @@
 </tr>
 <tr>
 <td>arr_diverted</td>
-<td>Número de voos desviados</td>
-</tr>
-<tr>
-<td>arr_delay</td>
-<td>Tempo total de atraso (minutos)</td>
-</tr>
-<tr>
-<td>carrier_delay</td>
-<td>Tempo de atraso causado pela companhia (minutos)</td>
-</tr>
-<tr>
-<td>weather_delay</td>
-<td>Tempo de atraso causado por meteorologia (minutos)</td>
-</tr>
-<tr>
-<td>nas_delay</td>
-<td>Tempo de atraso causado pelo NAS (minutos)</td>
-</tr>
-<tr>
-<td>security_delay</td>
-<td>Tempo de atraso causado por segurança (minutos)</td>
-</tr>
-<tr>
-<td>late_aircraft_delay</td>
-<td>Tempo de atraso causado por aeronave atrasada (minutos)</td>
+<td>Número de voos desviados para outro aeroporto</td>
 </tr>
 </tbody>
 </table>
+<h4 id="contagem-de-atrasos-por-causa">🔢 Contagem de Atrasos por Causa</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>carrier_ct</td>
+<td>Contagem de atrasos causados pela companhia (manutenção, tripulação, etc.)</td>
+</tr>
+<tr>
+<td>weather_ct</td>
+<td>Contagem de atrasos causados por condições meteorológicas adversas</td>
+</tr>
+<tr>
+<td>nas_ct</td>
+<td>Contagem de atrasos causados pelo Sistema de Aviação Nacional (tráfego aéreo)</td>
+</tr>
+<tr>
+<td>security_ct</td>
+<td>Contagem de atrasos causados por procedimentos de segurança</td>
+</tr>
+<tr>
+<td>late_aircraft_ct</td>
+<td>Contagem de atrasos causados por aeronave anterior atrasada</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tempo-de-atraso-por-causa-em-minutos">⏱️ Tempo de Atraso por Causa (em minutos)</h4>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arr_delay</td>
+<td>Tempo total de atraso de chegada (minutos)</td>
+</tr>
+<tr>
+<td>carrier_delay</td>
+<td>Tempo de atraso atribuído à companhia (minutos)</td>
+</tr>
+<tr>
+<td>weather_delay</td>
+<td>Tempo de atraso atribuído a meteorologia (minutos)</td>
+</tr>
+<tr>
+<td>nas_delay</td>
+<td>Tempo de atraso atribuído ao NAS (minutos)</td>
+</tr>
+<tr>
+<td>security_delay</td>
+<td>Tempo de atraso atribuído a segurança (minutos)</td>
+</tr>
+<tr>
+<td>late_aircraft_delay</td>
+<td>Tempo de atraso atribuído a aeronave atrasada (minutos)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="caracteristicas-do-dataset">Características do Dataset</h3>
+<ul>
+<li><strong>Granularidade</strong>: Agregado por ano, mês, companhia e aeroporto</li>
+<li><strong>Formato</strong>: CSV (Comma-Separated Values)</li>
+<li><strong>Codificação</strong>: UTF-8</li>
+<li><strong>Total de Registros</strong>: ~500.000+ linhas</li>
+<li><strong>Período</strong>: 120 meses de dados (10 anos)</li>
+<li><strong>Cobertura Geográfica</strong>: Todos os principais aeroportos dos EUA</li>
+<li><strong>Cobertura de Carriers</strong>: Todas as companhias aéreas comerciais americanas</li>
+</ul>
 <h3 id="armazenamento">Armazenamento</h3>
 <p>Os dados brutos estão armazenados em:
 - <strong>Camada Bronze</strong>: <code>/Data Layer/raw/dados_brutos.csv</code>
@@ -989,9 +1228,13 @@
 <h3 id="ferramentas-utilizadas">Ferramentas Utilizadas</h3>
 <ul>
 <li><strong>PySpark</strong>: Processamento de grandes volumes de dados</li>
-<li><strong>PostgreSQL</strong>: Banco de dados relacional</li>
+<li><strong>PostgreSQL</strong>: Banco de dados relacional (v15)</li>
+<li><strong>psycopg2-binary</strong>: Driver Python para conexão com PostgreSQL</li>
 <li><strong>Docker</strong>: Containerização do ambiente</li>
 <li><strong>Pandas</strong>: Análise exploratória de dados</li>
+<li><strong>NumPy</strong>: Computação numérica</li>
+<li><strong>Matplotlib/Seaborn</strong>: Visualização de dados</li>
+<li><strong>scikit-learn</strong>: Modelagem preditiva e análises estatísticas</li>
 </ul>
 
 

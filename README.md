@@ -50,7 +50,52 @@ O projeto implementa um **pipeline ETL completo** utilizando a **Arquitetura Med
 
 ### Fonte de Dados
 
-Os dados são provenientes do **Bureau of Transportation Statistics (BTS)** do governo dos Estados Unidos, contendo informações detalhadas sobre operações de voos, incluindo métricas de performance, causas de atrasos e estatísticas temporais.
+**Dataset**: [Airline Delay and Cancellation Data (2013-2023)](https://www.kaggle.com/datasets/sriharshaeedala/airline-delay)  
+**Licença**: U.S. Government Works  
+**Tamanho**: 28.73 MB | **Atualização**: Anual | **Usabilidade**: 10.0/10
+
+Os dados são provenientes do **Bureau of Transportation Statistics (BTS)** do governo dos Estados Unidos, disponibilizados no Kaggle. O dataset cobre o período de **agosto de 2013 a agosto de 2023** (10 anos de dados históricos) e fornece informações granulares sobre performance operacional de companhias aéreas em aeroportos dos EUA.
+
+#### Estrutura do Dataset
+
+O dataset possui **formato tabular** com **21 colunas** organizadas por combinações únicas de ano, mês, companhia aérea e aeroporto:
+
+**Dimensões Temporais e Identificadores:**
+- `year`, `month` - Dimensões temporais
+- `carrier`, `carrier_name` - Código e nome da companhia aérea
+- `airport`, `airport_name` - Código e nome do aeroporto
+
+**Métricas Operacionais:**
+- `arr_flights` - Total de voos de chegada
+- `arr_del15` - Voos atrasados ≥15 minutos
+- `arr_cancelled` - Voos cancelados
+- `arr_diverted` - Voos desviados
+
+**Contagem de Atrasos por Causa:**
+- `carrier_ct` - Atrasos devido à companhia aérea
+- `weather_ct` - Atrasos devido a condições meteorológicas
+- `nas_ct` - Atrasos devido ao NAS (National Airspace System)
+- `security_ct` - Atrasos devido a segurança
+- `late_aircraft_ct` - Atrasos devido a aeronave atrasada
+
+**Tempo de Atraso por Causa (minutos):**
+- `arr_delay` - Tempo total de atraso de chegada
+- `carrier_delay` - Tempo de atraso atribuído à companhia
+- `weather_delay` - Tempo de atraso atribuído ao clima
+- `nas_delay` - Tempo de atraso atribuído ao NAS
+- `security_delay` - Tempo de atraso atribuído à segurança
+- `late_aircraft_delay` - Tempo de atraso atribuído a aeronave atrasada
+
+#### Casos de Uso
+
+Este dataset permite realizar:
+
+✈️ **Análise de Performance**: Avaliar pontualidade de companhias em aeroportos específicos  
+📊 **Identificação de Tendências**: Descobrir padrões sazonais e períodos críticos  
+🔍 **Análise de Causa-Raiz**: Investigar os principais fatores de atrasos  
+📈 **Benchmarking**: Comparar performance entre companhias e aeroportos  
+🤖 **Modelagem Preditiva**: Desenvolver modelos de previsão de atrasos  
+💡 **Insights Estratégicos**: Informar decisões operacionais e estratégias de mitigação
 
 Para mais detalhes veja a documentação:
 
@@ -69,12 +114,32 @@ A documentação completa inclui:
 
 **Em desenvolvimento** - Dashboard interativo para análise de atrasos de voos
 
-**Features planejadas:**
-- Visão geral de métricas (KPIs principais)
-- Análise por companhia aérea
-- Análise de causas de atrasos
-- Análise temporal e sazonalidade
-- Análise por aeroporto
+**Páginas e Features Planejadas:**
+
+📊 **Overview (KPIs Principais)**
+- Total de voos, taxa de atrasos ≥15min, cancelamentos e desvios
+- Performance geral do setor aéreo (2013-2023)
+- Principais métricas comparativas
+
+✈️ **Análise por Companhia Aérea**
+- Ranking de performance (pontualidade, cancelamentos)
+- Comparativo entre carriers (benchmarking)
+- Volume operacional vs. eficiência
+
+🔍 **Análise de Causas de Atrasos**
+- Breakdown das 5 causas (Carrier, Weather, NAS, Security, Late Aircraft)
+- Contribuição relativa e absoluta de cada fator
+- Análise de causa-raiz por companhia e aeroporto
+
+📈 **Análise Temporal e Sazonalidade**
+- Tendências anuais e mensais
+- Padrões sazonais e períodos críticos
+- Evolução histórica da performance
+
+🌍 **Análise por Aeroporto**
+- Performance dos principais hubs
+- Comparativo geográfico
+- Aeroportos mais afetados por cada tipo de atraso
 
 ## MIRO - Gestão do Projeto
 
@@ -96,6 +161,7 @@ Utilize o board do MIRO para:
 - Docker e Docker Compose
 - Jupyter Notebook
 - PostgreSQL (via Docker)
+- psycopg2-binary (conexão Python-PostgreSQL)
 
 ### 1. Clone o repositório
 
@@ -182,8 +248,9 @@ SBD2-Austin-Airbnb/
 | Categoria | Tecnologias |
 |-----------|-------------|
 | **Processamento de Dados** | ![PySpark](https://img.shields.io/badge/PySpark-E25A1C?style=flat&logo=apache-spark&logoColor=white) ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white) |
-| **Banco de Dados** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) |
+| **Banco de Dados** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white) ![psycopg2](https://img.shields.io/badge/psycopg2-316192?style=flat&logo=postgresql&logoColor=white) ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white) |
 | **Visualização** | ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=flat) ![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=flat) ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=flat&logo=powerbi&logoColor=black) |
+| **Machine Learning** | ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) ![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat&logo=scipy&logoColor=white) |
 | **Desenvolvimento** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) |
 | **Documentação** | ![MkDocs](https://img.shields.io/badge/MkDocs-526CFE?style=flat&logo=materialformkdocs&logoColor=white) ![Markdown](https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white) |
 
@@ -193,19 +260,26 @@ SBD2-Austin-Airbnb/
 
 **13 Visualizações Implementadas:**
 
-1. Matriz de Correlação entre tipos de atrasos
-2. Ranking de companhias aéreas por atraso médio
-3. Impacto das condições meteorológicas
-4. Sazonalidade mensal e anual
-5. Tendências temporais de atrasos
-6. Breakdown por causa de atraso (Grid 2x2)
-7. Contribuição média de cada causa
-8. Distribuições estatísticas (histogramas)
-9. Top rankings categóricos
-10. Tendências de voos ao longo do tempo
-11. Agregações mensais
-12. Agregações anuais
-13. Decomposição sazonal (STL)
+**Análises de Correlação e Causas:**
+1. Matriz de Correlação entre tipos de atrasos (Carrier, Weather, NAS, Security, Late Aircraft)
+2. Breakdown por causa de atraso - Grid 2x2 (contribuição relativa de cada fator)
+3. Contribuição percentual média de cada causa de atraso
+
+**Performance de Companhias Aéreas:**
+4. Ranking de companhias aéreas por atraso médio (TOP/BOTTOM performers)
+5. Taxa de cancelamento e desvio por companhia
+6. Volume de operações vs. eficiência operacional
+
+**Análises Temporais:**
+7. Sazonalidade mensal - identificação de picos de atrasos
+8. Tendências anuais (2013-2023) - evolução da performance
+9. Decomposição sazonal (STL) - padrões cíclicos e tendências
+10. Agregações temporais (dia/semana/mês/ano)
+
+**Análises de Distribuição:**
+11. Distribuições estatísticas de atrasos (histogramas e boxplots)
+12. Impacto das condições meteorológicas na operação
+13. Top rankings por aeroporto - hubs mais afetados por atrasos
 
 ---
 
