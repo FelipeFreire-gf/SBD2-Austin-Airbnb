@@ -11,7 +11,7 @@ Esta é a documentação oficial do projeto de **Análise de Atrasos de Voos em 
 
 ## Sobre o Dataset
 
-**Dataset**: [Airline Delay and Cancellation Data (2013-2023)](https://www.kaggle.com/datasets/sriharshaeedala/airline-delay)  
+**Dataset**: Airline Delay and Cancellation Data (2013-2023)  
 **Fonte**: Bureau of Transportation Statistics (BTS) - U.S. Government  
 **Período**: Agosto 2013 - Agosto 2023 (10 anos)  
 **Tamanho**: 28.73 MB | **Licença**: U.S. Government Works | **Usabilidade**: 10.0/10

@@ -50,7 +50,7 @@ O projeto implementa um **pipeline ETL completo** utilizando a **Arquitetura Med
 
 ### Fonte de Dados
 
-**Dataset**: [Airline Delay and Cancellation Data (2013-2023)](https://www.kaggle.com/datasets/sriharshaeedala/airline-delay)  
+**Dataset**: Airline Delay and Cancellation Data (2013-2023)  
 **Licença**: U.S. Government Works  
 **Tamanho**: 28.73 MB | **Atualização**: Anual | **Usabilidade**: 10.0/10
 
