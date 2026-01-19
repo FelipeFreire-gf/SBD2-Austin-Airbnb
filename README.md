@@ -346,7 +346,7 @@ SBD2-Airline_Delay_Cause/
 
 ## Licença
 
-Este projeto é parte de uma atividade acadêmica da disciplina de **Banco de Dados 2** da **Universidade de Brasília (UnB)**.
+Este projeto é parte de uma atividade acadêmica da disciplina de **Sistemas de Banco de Dados 2** da **Universidade de Brasília (UnB)**.
 
 **Instituição**: Faculdade de Ciências e Tecnologias em Engenharia (FCTE)  
 **Curso**: Engenharia de Software  
