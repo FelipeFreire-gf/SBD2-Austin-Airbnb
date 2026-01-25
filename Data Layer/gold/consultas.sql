@@ -1,13 +1,6 @@
--- ============================================================================
--- GOLD LAYER: CONSULTAS ANALÍTICAS PARA POWER BI
--- Queries otimizadas para análise de performance e atrasos de voos
--- Dataset: Airline Delay and Cancellation Data (2013-2023)
--- Total: 10 consultas estratégicas
--- ============================================================================
 
--- ============================================================================
 -- 1. ANÁLISE YEAR-OVER-YEAR (CRESCIMENTO E VARIAÇÃO ANUAL)
--- ============================================================================
+
 -- Objetivo: Identificar tendências de crescimento/declínio com variações percentuais
 WITH yearly_metrics AS (
     SELECT
@@ -41,9 +34,9 @@ yoy_comparison AS (
 SELECT * FROM yoy_comparison
 ORDER BY year;
 
--- ============================================================================
+
 -- 2. TOP 10 ROTAS MAIS MOVIMENTADAS (CARRIER × AEROPORTO)
--- ============================================================================
+
 -- Objetivo: Identificar principais operações e sua performance (para análise de rotas críticas)
 WITH route_performance AS (
     SELECT
@@ -79,9 +72,9 @@ FROM route_performance
 ORDER BY total_voos DESC
 LIMIT 10;
 
--- ============================================================================
+
 -- 3. RANKING DE COMPANHIAS AÉREAS POR PONTUALIDADE
--- ============================================================================
+
 -- Objetivo: Identificar melhores e piores companhias (para gráfico de barras)
 WITH carrier_stats AS (
     SELECT
@@ -103,9 +96,9 @@ SELECT *
 FROM carrier_stats
 ORDER BY taxa_pontualidade_pct DESC;
 
--- ============================================================================
+
 -- 4. TOP 20 AEROPORTOS MAIS PROBLEMÁTICOS
--- ============================================================================
+
 -- Objetivo: Identificar aeroportos com maiores problemas (para matriz de performance)
 WITH airport_stats AS (
     SELECT
@@ -129,9 +122,9 @@ FROM airport_stats
 ORDER BY taxa_atraso_pct DESC
 LIMIT 20;
 
--- ============================================================================
+
 -- 5. DISTRIBUIÇÃO DE SEVERIDADE DE ATRASOS
--- ============================================================================
+
 -- Objetivo: Classificar voos por faixas de atraso para análise de distribuição
 WITH delay_severity AS (
     SELECT
@@ -179,9 +172,9 @@ SELECT
 FROM delay_severity
 ORDER BY faixa_atraso;
 
--- ============================================================================
+
 -- 6. CONCENTRAÇÃO DE MERCADO E MARKET SHARE POR CARRIER
--- ============================================================================
+
 -- Objetivo: Analisar distribuição de market share e concentração de mercado
 WITH carrier_market_share AS (
     SELECT
@@ -234,9 +227,9 @@ FROM carrier_market_share cms
 CROSS JOIN market_concentration mc
 ORDER BY cms.ranking_volume;
 
--- ============================================================================
+
 -- 7. ANÁLISE DE CAUSAS DE ATRASOS - BREAKDOWN PERCENTUAL
--- ============================================================================
+
 -- Objetivo: Contribuição de cada causa (para gráfico de pizza/donut)
 WITH causa_agregada AS (
     SELECT
@@ -263,9 +256,9 @@ FROM causa_agregada
 WHERE tempo_total_minutos > 0
 ORDER BY tempo_total_minutos DESC;
 
--- ============================================================================
+
 -- 8. SAZONALIDADE MENSAL E CAUSAS DE ATRASO
--- ============================================================================
+
 -- Objetivo: Identificar padrões sazonais e principais causas por mês
 WITH monthly_causes AS (
     SELECT
@@ -296,9 +289,9 @@ SELECT *
 FROM monthly_causes
 ORDER BY month;
 
--- ============================================================================
+
 -- 9. MATRIZ ANO × MÊS COM RANKING DE PERFORMANCE
--- ============================================================================
+
 -- Objetivo: Heatmap ano-mês mostrando evolução mensal ao longo dos anos
 WITH monthly_yearly_performance AS (
     SELECT
@@ -336,9 +329,9 @@ SELECT
 FROM monthly_yearly_performance
 ORDER BY year, month;
 
--- ============================================================================
+
 -- 10. COMPARAÇÃO PANDEMIA (PRÉ/DURANTE/PÓS COVID-19)
--- ============================================================================
+
 -- Objetivo: Medir impacto da COVID-19 na operação (análise comparativa)
 WITH pandemic_periods AS (
     SELECT
@@ -370,7 +363,3 @@ ORDER BY
         WHEN periodo = 'Durante Pandemia (2020)' THEN 2
         ELSE 3
     END;
-
--- ============================================================================
--- FIM DAS CONSULTAS ANALÍTICAS
--- ============================================================================
