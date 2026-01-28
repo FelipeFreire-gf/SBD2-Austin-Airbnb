@@ -22,11 +22,11 @@ SELECT
     SUM(f.SCR_DLY) AS tempo_total_atraso_seguranca,
     SUM(f.LTE_ARA_DLY) AS tempo_total_atraso_aeronave,
     -- Breakdown de causas de atraso (contagem)
-    SUM(f.CRE_CT) AS contagem_atraso_carrier,
-    SUM(f.WAE_CT) AS contagem_atraso_clima,
-    SUM(f.NAS_CT) AS contagem_atraso_nas,
-    SUM(f.SCR_CT) AS contagem_atraso_seguranca,
-    SUM(f.LTE_ARA_CT) AS contagem_atraso_aeronave
+    ROUND(SUM(f.CRE_CT), 0) AS contagem_atraso_carrier,
+    ROUND(SUM(f.WAE_CT), 0) AS contagem_atraso_clima,
+    ROUND(SUM(f.NAS_CT), 0) AS contagem_atraso_nas,
+    ROUND(SUM(f.SCR_CT), 0) AS contagem_atraso_seguranca,
+    ROUND(SUM(f.LTE_ARA_CT), 0) AS contagem_atraso_aeronave
 FROM dw.FCT_FIT_DLS f;
 
 
@@ -55,12 +55,12 @@ yoy_comparison AS (
         y1.atraso_medio_minutos,
         y1.total_cancelamentos,
         y1.taxa_cancelamento_pct,
-        ROUND(100.0 * (y1.total_voos - COALESCE(y2.total_voos, 0)) / NULLIF(y2.total_voos, 0), 2) AS variacao_voos_pct,
-        ROUND(y1.taxa_atraso_pct - COALESCE(y2.taxa_atraso_pct, 0), 2) AS variacao_taxa_atraso_pp,
-        ROUND(y1.atraso_medio_minutos - COALESCE(y2.atraso_medio_minutos, 0), 2) AS variacao_atraso_medio_min,
-        ROUND(100.0 * (y1.total_cancelamentos - COALESCE(y2.total_cancelamentos, 0)) / NULLIF(y2.total_cancelamentos, 0), 2) AS variacao_cancelamentos_pct
+        ROUND(100.0 * (y1.total_voos - y2.total_voos) / NULLIF(y2.total_voos, 0), 2) AS variacao_voos_pct,
+        ROUND(y1.taxa_atraso_pct - y2.taxa_atraso_pct, 2) AS variacao_taxa_atraso_pp,
+        ROUND(y1.atraso_medio_minutos - y2.atraso_medio_minutos, 2) AS variacao_atraso_medio_min,
+        ROUND(100.0 * (y1.total_cancelamentos - y2.total_cancelamentos) / NULLIF(y2.total_cancelamentos, 0), 2) AS variacao_cancelamentos_pct
     FROM yearly_metrics y1
-    LEFT JOIN yearly_metrics y2 ON y1.YAR = y2.YAR - 1
+    LEFT JOIN yearly_metrics y2 ON y1.YAR = y2.YAR + 1
 )
 SELECT * FROM yoy_comparison
 ORDER BY YAR;
@@ -85,6 +85,8 @@ WITH route_performance AS (
         SUM(f.CRE_DLY) AS tempo_atraso_carrier,
         SUM(f.WAE_DLY) AS tempo_atraso_clima,
         SUM(f.NAS_DLY) AS tempo_atraso_nas,
+        SUM(f.SCR_DLY) AS tempo_atraso_seguranca,
+        SUM(f.LTE_ARA_DLY) AS tempo_atraso_aeronave,
         -- Identificar causa principal de atraso
         CASE
             WHEN SUM(f.CRE_DLY) >= GREATEST(SUM(f.WAE_DLY), SUM(f.NAS_DLY), SUM(f.SCR_DLY), SUM(f.LTE_ARA_DLY)) THEN 'Carrier'
@@ -211,16 +213,16 @@ WITH causa_agregada AS (
     SELECT
         'Companhia Aérea' AS causa,
         SUM(CRE_DLY) AS tempo_total_minutos,
-        SUM(CRE_CT) AS contagem_incidentes
+        ROUND(SUM(CRE_CT), 0) AS contagem_incidentes
     FROM dw.FCT_FIT_DLS
     UNION ALL
-    SELECT 'Clima', SUM(WAE_DLY), SUM(WAE_CT) FROM dw.FCT_FIT_DLS
+    SELECT 'Clima', SUM(WAE_DLY), ROUND(SUM(WAE_CT), 0) FROM dw.FCT_FIT_DLS
     UNION ALL
-    SELECT 'Sistema Nacional (NAS)', SUM(NAS_DLY), SUM(NAS_CT) FROM dw.FCT_FIT_DLS
+    SELECT 'Sistema Nacional (NAS)', SUM(NAS_DLY), ROUND(SUM(NAS_CT), 0) FROM dw.FCT_FIT_DLS
     UNION ALL
-    SELECT 'Segurança', SUM(SCR_DLY), SUM(SCR_CT) FROM dw.FCT_FIT_DLS
+    SELECT 'Segurança', SUM(SCR_DLY), ROUND(SUM(SCR_CT), 0) FROM dw.FCT_FIT_DLS
     UNION ALL
-    SELECT 'Aeronave Atrasada', SUM(LTE_ARA_DLY), SUM(LTE_ARA_CT) FROM dw.FCT_FIT_DLS
+    SELECT 'Aeronave Atrasada', SUM(LTE_ARA_DLY), ROUND(SUM(LTE_ARA_CT), 0) FROM dw.FCT_FIT_DLS
 )
 SELECT
     causa,
