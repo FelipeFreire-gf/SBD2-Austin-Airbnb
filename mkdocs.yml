@@ -1,4 +1,4 @@
-site_name: Análise de Atrasos de Voos em Aeroportos
+site_name: Airline Delay Cause
 
 repo_url: https://github.com/FelipeFreire-gf/SBD2-Airline_Delay_Cause
 repo_name: 2025.4-airline-delays
@@ -7,16 +7,19 @@ site_description: "Documentação do Projeto de Análise de Atrasos de Voos em A
 nav:
   - Home: index.md
   
-  - Entrega 0 - Base de Dados:
+  - Data Base:
     - Proposito de Avaliação: pages/entrega0/0.md
 
-  - Entrega 1 - Raw e Silver:
+  - Raw:
     - Planejamento de Avaliação: pages/entrega1/1.md
 
-  - Entrega 2 - Gold:
+  - Silver:
+    - Planejamento de Avaliação: pages/entrega1/1.md
+
+  - Gold:
     - Descrição da Medição: pages/entrega2/2.md
 
-  - Entrega 3 - Power Bi:
+  - Power Bi:
     - Execução da Medição: pages/entrega3/3.md
 
 theme:
@@ -33,15 +36,15 @@ theme:
   
   palette:
     - scheme: default
-      primary: '--md-primary-fg-color'
-      accent: '--md-primary-fg-color'
+      primary: white
+      accent: white
       toggle:
         icon: material/lightbulb-outline
         name: Mude para o tema escuro
         
     - scheme: slate
-      primary: '--md-primary-fg-color'
-      accent: '--md-primary-fg-color'
+      primary: black
+      accent: black
       toggle:
         icon: material/lightbulb
         name: Mude para o tema claro

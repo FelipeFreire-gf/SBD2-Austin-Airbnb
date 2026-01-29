@@ -1,75 +1,142 @@
-# Bem-vindo ao Projeto Análise de Atrasos de Voos
+# Análise de Atrasos de Voos em Aeroportos
 
-Esta é a documentação oficial do projeto de **Análise de Atrasos de Voos em Aeroportos dos Estados Unidos** desenvolvido pelo **Grupo 04** na disciplina de Banco de Dados 2 da **UnB**. Aqui você encontrará toda a documentação técnica, modelagens, análises e guias de desenvolvimento.
+---
 
-## Estrutura do Projeto
+**ETL pipeline seguindo a arquitetura Medallion (Raw, Silver, Gold) para análise de dados sobre atrasos de voos em aeroportos dos Estados Unidos.**
 
-* **Entrega 0 - Base de Dados**: Coleta e armazenamento dos dados brutos (Camada Bronze)
-* **Entrega 1 - Raw → Silver**: Pipeline ETL, limpeza e carga no PostgreSQL
-* **Entrega 2 - Gold Layer**: Agregações, métricas e visualizações analíticas
-* **Entrega 3 - Power BI**: Dashboard interativo e publicação
+<div align="center">
+<img src="/assets/logo.png" alt="Análise de Atrasos de Voos" style="max-width: 400px; height: auto; margin: 20px 0;">
+</div>
 
-## Sobre o Dataset
+<div align="center">
 
-**Dataset**: Airline Delay and Cancellation Data (2013-2023)  
-**Fonte**: Bureau of Transportation Statistics (BTS) - U.S. Government  
-**Período**: Agosto 2013 - Agosto 2023 (10 anos)  
-**Tamanho**: 28.73 MB | **Licença**: U.S. Government Works | **Usabilidade**: 10.0/10
+</div>
 
-### Propósito do Dataset
+---
 
-O dataset oferece insights detalhados sobre a performance operacional de companhias aéreas americanas em diversos aeroportos durante 10 anos. Permite análises de:
+## Sobre o Projeto
 
-- **Performance de Companhias**: Pontualidade, cancelamentos e eficiência operacional
-- **Tendências Temporais**: Padrões sazonais, evolução anual e períodos críticos
-- **Análise de Causa-Raiz**: Identificação dos principais fatores de atrasos
-- **Benchmarking**: Comparação entre carriers e aeroportos
-- **Modelagem Preditiva**: Previsão de atrasos e estratégias de mitigação
+Este repositório é dedicado à documentação de todos os artefatos criados pelo **Grupo 04** na disciplina de **Sistemas de Banco de Dados 2** da Faculdade de Ciências e Tecnologias em Engenharia da **Universidade de Brasília (FCTE-UnB)**.
 
-### Estrutura dos Dados (21 Colunas)
+### Objetivos
 
-**Dimensões Temporais e Identificadores:**
-- `year`, `month` - Dimensões temporais
-- `carrier`, `carrier_name` - Código e nome da companhia aérea
-- `airport`, `airport_name` - Código e nome do aeroporto
+O projeto implementa um **pipeline ETL completo** utilizando a **Arquitetura Medallion** para análise de dados históricos de atrasos de voos nos Estados Unidos. Os principais objetivos são:
 
-**Métricas Operacionais:**
-- `arr_flights` - Total de voos de chegada
-- `arr_del15` - Voos atrasados ≥15 minutos
-- `arr_cancelled` - Voos cancelados
-- `arr_diverted` - Voos desviados
+- **Arquitetura Lakehouse**: Implementar camadas Bronze (Raw), Silver (Curated) e Gold (Aggregated) para armazenamento e processamento
 
-**Contagem de Atrasos por Causa:**
-- `carrier_ct` - Atrasos devido à companhia aérea
-- `weather_ct` - Atrasos devido a condições meteorológicas
-- `nas_ct` - Atrasos devido ao NAS (National Airspace System)
-- `security_ct` - Atrasos devido a segurança
-- `late_aircraft_ct` - Atrasos devido a aeronave atrasada
+- **Modelagem de Dados**: Desenvolver representações conceitual (MER), lógica (DER) e física (DDL) do modelo de dados
 
-**Tempo de Atraso por Causa (minutos):**
-- `arr_delay` - Tempo total de atraso
-- `carrier_delay` - Tempo atribuído à companhia
-- `weather_delay` - Tempo atribuído ao clima
-- `nas_delay` - Tempo atribuído ao NAS
-- `security_delay` - Tempo atribuído à segurança
-- `late_aircraft_delay` - Tempo atribuído a aeronave atrasada
+- **Banco de Dados**: Construir e popular um banco PostgreSQL containerizado para consultas
 
-## Arquitetura do Projeto
+- **Dashboard Analítico**: Desenvolver painéis interativos no Power BI para exploração de dados e geração de insights sobre:
+     - Atrasos de voos por companhia aérea
+     - Causas de atrasos (meteorologia, companhia, NAS, segurança, aeronave)
+     - Padrões de sazonalidade
+     - Cancelamentos e desvios
+     - Tendências temporais
 
-**Arquitetura Medallion (Lakehouse)**
+---
 
-- **Bronze (Raw)**: Dados brutos do Kaggle sem transformações
-- **Silver (Curated)**: Dados limpos, normalizados e armazenados no PostgreSQL
-- **Gold (Aggregated)**: Métricas agregadas, KPIs e visualizações analíticas
+## Principais Análises
 
-## Tecnologias
+**13 Visualizações Implementadas:**
 
-- **Processamento**: PySpark, Pandas, NumPy
-- **Banco de Dados**: PostgreSQL (v15) com psycopg2-binary
-- **Container**: Docker & Docker Compose
-- **Visualização**: Matplotlib, Seaborn, Power BI
-- **Machine Learning**: scikit-learn, SciPy
-- **Documentação**: MkDocs, Markdown
-- **Controle de Versão**: Git, GitHub
+**Análises de Correlação e Causas:**
 
-Para começar a contribuir, leia o [Guia de Contribuição](CONTRIBUTING.md).
+1. Matriz de Correlação entre tipos de atrasos (Carrier, Weather, NAS, Security, Late Aircraft)
+2. Breakdown por causa de atraso - Grid 2x2 (contribuição relativa de cada fator)
+3. Contribuição percentual média de cada causa de atraso
+
+**Performance de Companhias Aéreas:**
+
+4. Ranking de companhias aéreas por atraso médio (TOP/BOTTOM performers)
+5. Taxa de cancelamento e desvio por companhia
+6. Volume de operações vs. eficiência operacional
+
+**Análises Temporais:**
+
+7. Sazonalidade mensal - identificação de picos de atrasos
+8. Tendências anuais (2013-2023) - evolução da performance
+9. Decomposição sazonal (STL) - padrões cíclicos e tendências
+10. Agregações temporais (dia/semana/mês/ano)
+
+**Análises de Distribuição:**
+
+11. Distribuições estatísticas de atrasos (histogramas e boxplots)
+12. Impacto das condições meteorológicas na operação
+13. Top rankings por aeroporto - hubs mais afetados por atrasos
+
+---
+
+## Equipe
+
+**Grupo 04 - Banco de Dados 2 | FCTE-UnB**
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/FelipeFreire-gf">
+        <sub><b>Felipe das Neves</b></sub>
+      </a>
+      <br>
+      <sub>Desenvolvedor</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/leozinlima">
+        <sub><b>Leonardo de Melo</b></sub>
+      </a>
+      <br>
+      <sub>Desenvolvedor</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/MateuSansete">
+        <sub><b>Mateus Bastos</b></sub>
+      </a>
+      <br>
+      <sub>Desenvolvedor</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Bessazs">
+        <sub><b>Vitor Pereira</b></sub>
+      </a>
+      <br>
+      <sub>Nosso Amigo <3 </sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/gabriel-lima258">
+        <sub><b>Gabriel Lima</b></sub>
+      </a>
+      <br>
+      <sub>Nosso Amigo <3 </sub>
+    </td>
+  </tr>
+
+<div align="center">
+<img src="/assets/fotoFoto.jpeg" alt="Análise de Atrasos de Voos" style="max-width: 600px; height: auto; margin: 20px 0;">
+</div>
+
+<div align="center">
+
+</table>
+
+</div>
+
+---
+
+## Licença
+
+Este projeto é parte de uma atividade acadêmica da disciplina de **Sistemas de Banco de Dados 2** da **Universidade de Brasília (UnB)**.
+
+**Instituição**: Faculdade de Ciências e Tecnologias em Engenharia (FCTE)  
+**Curso**: Engenharia de Software  
+**Período**: 2025.4
+
+---
+
+<div align="center">
+
+<sub>Desenvolvido pelo Grupo 04 | UnB - 2026</sub>
+
+</div>
